@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, projects, deployments, buildLogs, environmentVariables, githubTokens, customDomains, InsertProject, InsertDeployment, InsertBuildLog, InsertGitHubToken } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,103 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+/**
+ * Project queries
+ */
+export async function getProjectsByUserId(userId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(projects).where(eq(projects.userId, userId));
+}
+
+export async function getProjectById(projectId: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(projects).where(eq(projects.id, projectId)).limit(1);
+  return result[0];
+}
+
+export async function createProject(data: InsertProject) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(projects).values(data);
+  return result;
+}
+
+/**
+ * Deployment queries
+ */
+export async function getDeploymentsByProjectId(projectId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(deployments).where(eq(deployments.projectId, projectId)).orderBy(desc(deployments.createdAt));
+}
+
+export async function getDeploymentById(deploymentId: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(deployments).where(eq(deployments.id, deploymentId)).limit(1);
+  return result[0];
+}
+
+export async function createDeployment(data: InsertDeployment) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const result = await db.insert(deployments).values(data);
+  return result;
+}
+
+export async function updateDeploymentStatus(deploymentId: number, status: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.update(deployments).set({ status: status as any }).where(eq(deployments.id, deploymentId));
+}
+
+/**
+ * Build logs queries
+ */
+export async function getBuildLogsByDeploymentId(deploymentId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(buildLogs).where(eq(buildLogs.deploymentId, deploymentId)).orderBy(buildLogs.timestamp);
+}
+
+export async function addBuildLog(data: InsertBuildLog) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.insert(buildLogs).values(data);
+}
+
+/**
+ * Environment variables queries
+ */
+export async function getEnvironmentVariablesByProjectId(projectId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(environmentVariables).where(eq(environmentVariables.projectId, projectId));
+}
+
+/**
+ * GitHub token queries
+ */
+export async function getGitHubTokenByUserId(userId: number) {
+  const db = await getDb();
+  if (!db) return undefined;
+  const result = await db.select().from(githubTokens).where(eq(githubTokens.userId, userId)).limit(1);
+  return result[0];
+}
+
+export async function saveGitHubToken(data: InsertGitHubToken) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  return db.insert(githubTokens).values(data).onDuplicateKeyUpdate({ set: data });
+}
+
+/**
+ * Custom domains queries
+ */
+export async function getCustomDomainsByProjectId(projectId: number) {
+  const db = await getDb();
+  if (!db) return [];
+  return db.select().from(customDomains).where(eq(customDomains.projectId, projectId));
+}
