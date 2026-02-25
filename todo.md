@@ -15,31 +15,31 @@
 - [x] Create core tRPC procedures for projects and deployments
 
 ## Phase 3: GitHub Integration
-- [ ] Implement GitHub OAuth flow for repository access
-- [ ] Create repository listing and import functionality
-- [ ] Build branch management system
+- [x] Implement GitHub OAuth flow for repository access
+- [x] Create repository listing and import functionality
+- [x] Build branch management system
 - [ ] Implement webhook handling for GitHub push events
 - [ ] Create repository cloning and code fetching logic
 
 ## Phase 4: Build Pipeline Engine
-- [ ] Implement framework detection (Next.js, React, Vue, Svelte, etc.)
-- [ ] Create build command mapping for different frameworks
-- [ ] Build isolated build environment system
+- [x] Implement framework detection (Next.js, React, Vue, Svelte, etc.)
+- [x] Create build command mapping for different frameworks
+- [x] Build isolated build environment system
 - [ ] Implement real-time build log streaming (WebSocket)
 - [ ] Create build cache management system
 - [ ] Implement build timeout and error handling
 - [ ] Create deployment artifact storage system
 
 ## Phase 5: Deployment System
-- [ ] Create deployment URL generation system
-- [ ] Implement static file serving for deployments
-- [ ] Build deployment history tracking
-- [ ] Implement rollback functionality
-- [ ] Create deployment status tracking (pending, building, success, failed)
+- [x] Create deployment URL generation system
+- [x] Implement static file serving for deployments
+- [x] Build deployment history tracking
+- [x] Implement rollback functionality
+- [x] Create deployment status tracking (pending, building, success, failed)
 - [ ] Build environment variable injection system
 
 ## Phase 6: Project Dashboard UI
-- [ ] Create project overview page with deployment status
+- [x] Create project overview page with deployment status
 - [ ] Build deployments list with filtering and sorting
 - [ ] Implement real-time build log viewer
 - [ ] Create project settings page
