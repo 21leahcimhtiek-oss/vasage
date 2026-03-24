@@ -8,8 +8,9 @@ import { useAuth } from "./_core/hooks/useAuth";
 import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
+import Checkout from "./pages/Checkout";
 
-function Router() {
+function HomeRoute() {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
@@ -20,14 +21,18 @@ function Router() {
     );
   }
 
+  return isAuthenticated ? <Dashboard /> : <Landing />;
+}
+
+function Router() {
   return (
     <Switch>
-      <Route path={"/"} component={isAuthenticated ? Dashboard : Landing} />
+      <Route path={"/checkout"} component={Checkout} />
+      <Route path={"/"} component={HomeRoute} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
   );
-
 }
 
 function App() {
