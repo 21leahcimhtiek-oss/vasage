@@ -15,12 +15,19 @@ export default function Landing() {
             </div>
             <span className="text-xl font-bold gradient-text">Vasage</span>
           </div>
-          <a href={getLoginUrl()}>
-            <Button className="gap-2">
-              Get Started
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </a>
+          <div className="flex items-center gap-3">
+            <a href="/marketplace">
+              <Button variant="ghost" className="gap-2">
+                Marketplace
+              </Button>
+            </a>
+            <a href={getLoginUrl()}>
+              <Button className="gap-2">
+                Get Started
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </a>
+          </div>
         </div>
       </nav>
 

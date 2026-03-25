@@ -9,6 +9,7 @@ import Landing from "./pages/Landing";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import Checkout from "./pages/Checkout";
+import Marketplace from "./pages/Marketplace";
 
 function HomeRoute() {
   const { isAuthenticated, loading } = useAuth();
@@ -28,6 +29,7 @@ function Router() {
   return (
     <Switch>
       <Route path={"/checkout"} component={Checkout} />
+      <Route path={"/marketplace"} component={Marketplace} />
       <Route path={"/"} component={HomeRoute} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />

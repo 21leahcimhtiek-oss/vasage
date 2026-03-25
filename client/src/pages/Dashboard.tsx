@@ -2,7 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
-import { Plus, GitBranch, Rocket, Settings, LogOut } from "lucide-react";
+import { Plus, GitBranch, Rocket, Settings, LogOut, Store } from "lucide-react";
 import { useState } from "react";
 
 export default function Dashboard() {
@@ -31,6 +31,12 @@ export default function Dashboard() {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <a href="/marketplace">
+              <Button variant="outline" size="sm" className="gap-2">
+                <Store className="w-4 h-4" />
+                Marketplace
+              </Button>
+            </a>
             <div className="text-right">
               <p className="text-sm font-medium">{user?.name}</p>
               <p className="text-xs text-muted-foreground">{user?.email}</p>
