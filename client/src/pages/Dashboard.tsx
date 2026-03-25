@@ -26,7 +26,7 @@ export default function Dashboard() {
               <Rocket className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold">Vercel Clone</h1>
+              <h1 className="text-xl font-bold">Vasage</h1>
               <p className="text-sm text-muted-foreground">Deployment Platform</p>
             </div>
           </div>

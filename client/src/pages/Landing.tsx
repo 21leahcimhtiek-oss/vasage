@@ -13,7 +13,7 @@ export default function Landing() {
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
               <Rocket className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold gradient-text">Vercel Clone</span>
+            <span className="text-xl font-bold gradient-text">Vasage</span>
           </div>
           <a href={getLoginUrl()}>
             <Button className="gap-2">
@@ -164,7 +164,7 @@ export default function Landing() {
       {/* Footer */}
       <footer className="border-t border-border/50 bg-muted/30 py-12">
         <div className="container text-center text-sm text-muted-foreground">
-          <p>&copy; 2026 Vercel Clone. Built with elegance and precision.</p>
+          <p>&copy; 2026 Vasage. Built with elegance and precision.</p>
         </div>
       </footer>
     </div>
