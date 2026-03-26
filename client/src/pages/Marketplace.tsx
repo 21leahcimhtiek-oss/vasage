@@ -54,6 +54,21 @@ const APPS: MarketplaceApp[] = [
     envVars: [{ key: "OPENAI_API_KEY", description: "OpenAI API key (GPT-4o)", required: true }],
   },
 
+  {
+    id: "aurora-marketing-os",
+    name: "Aurora Marketing OS",
+    tagline: "5-agent AI Marketing Command Center",
+    description: "Full marketing OS with 5 specialist AI agents: Productization (repo → product), CMO Strategy (GTM + brand assets), Stripe Automation (pricing architecture), Distribution (channel strategy + launch plan), and Analytics (KPI framework). 65+ repos pre-loaded. GPT-4o streaming.",
+    category: "AI Tools", subcategory: "Marketing",
+    tags: ["AI", "Marketing", "Multi-Agent", "GPT-4o", "Stripe", "Analytics"],
+    emoji: "🌌", featured: true,
+    githubUrl: `https://github.com/${OWNER}/aurora-marketing-os`,
+    githubOwner: OWNER, githubRepo: "aurora-marketing-os",
+    framework: "nextjs", defaultBranch: "main",
+    buildCommand: "npm run build", installCommand: "npm install", outputDirectory: ".next",
+    envVars: [{ key: "OPENAI_API_KEY", description: "OpenAI API key (GPT-4o)", required: true }],
+  },
+
   // ── SAAS TOOLS ─────────────────────────────────────────────────────────────
   {
     id: "invoiceai",
